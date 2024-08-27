@@ -3,6 +3,7 @@ import { CompanyBalanceSheet, CompanyCashFlow } from "../../company";
 import { useOutletContext } from "react-router";
 import { getBalanceSheet } from "../../api";
 import RatioList from "../RatioList/RatioList";
+import Spinner from "../Spinner/Spinner";
 
 interface Props {}
 
@@ -14,7 +15,6 @@ const config = [
   {
     label: "Operating Cashflow",
     render: (company: CompanyCashFlow) => company.operatingCashFlow,
-  
   },
   {
     label: "Investing Cashflow",
@@ -61,7 +61,7 @@ const BalanceSheet = (props: Props) => {
       {companyData ? (
         <RatioList config={config} data={companyData} />
       ) : (
-        <>Company not fount!</>
+        <Spinner />
       )}
     </>
   );
